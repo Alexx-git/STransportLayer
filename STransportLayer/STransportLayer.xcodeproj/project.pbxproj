@@ -15,6 +15,14 @@
 		F52AA1A3256D9CFA003DD345 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52AA19F256D9CFA003DD345 /* Client.swift */; };
 		F52AA1A4256D9CFA003DD345 /* ServerConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52AA1A0256D9CFA003DD345 /* ServerConnection.swift */; };
 		F52AA1A5256D9CFA003DD345 /* ClientConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52AA1A1256D9CFA003DD345 /* ClientConnection.swift */; };
+		F52AA1DF256FF106003DD345 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52AA1DE256FF106003DD345 /* AppDelegate.swift */; };
+		F52AA1E3256FF106003DD345 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52AA1E2256FF106003DD345 /* ViewController.swift */; };
+		F52AA1E8256FF107003DD345 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F52AA1E7256FF107003DD345 /* Assets.xcassets */; };
+		F52AA1EB256FF107003DD345 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F52AA1E9256FF107003DD345 /* LaunchScreen.storyboard */; };
+		F52AA1F2256FF12B003DD345 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52AA19E256D9CFA003DD345 /* Server.swift */; };
+		F52AA1F3256FF12B003DD345 /* ServerConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52AA1A0256D9CFA003DD345 /* ServerConnection.swift */; };
+		F52AA1F4256FF12B003DD345 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52AA19F256D9CFA003DD345 /* Client.swift */; };
+		F52AA1F5256FF12B003DD345 /* ClientConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52AA1A1256D9CFA003DD345 /* ClientConnection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,10 +36,23 @@
 		F52AA19F256D9CFA003DD345 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		F52AA1A0256D9CFA003DD345 /* ServerConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConnection.swift; sourceTree = "<group>"; };
 		F52AA1A1256D9CFA003DD345 /* ClientConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientConnection.swift; sourceTree = "<group>"; };
+		F52AA1DC256FF106003DD345 /* ServerTarget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ServerTarget.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F52AA1DE256FF106003DD345 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F52AA1E2256FF106003DD345 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F52AA1E7256FF107003DD345 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F52AA1EA256FF107003DD345 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F52AA1EC256FF107003DD345 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		F52AA182256D9C55003DD345 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F52AA1D9256FF106003DD345 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -45,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				F52AA187256D9C55003DD345 /* STransportLayer */,
+				F52AA1DD256FF106003DD345 /* ServerTarget */,
 				F52AA186256D9C55003DD345 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				F52AA185256D9C55003DD345 /* STransportLayer.app */,
+				F52AA1DC256FF106003DD345 /* ServerTarget.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -71,6 +94,18 @@
 				F52AA196256D9C58003DD345 /* Info.plist */,
 			);
 			path = STransportLayer;
+			sourceTree = "<group>";
+		};
+		F52AA1DD256FF106003DD345 /* ServerTarget */ = {
+			isa = PBXGroup;
+			children = (
+				F52AA1DE256FF106003DD345 /* AppDelegate.swift */,
+				F52AA1E2256FF106003DD345 /* ViewController.swift */,
+				F52AA1E7256FF107003DD345 /* Assets.xcassets */,
+				F52AA1E9256FF107003DD345 /* LaunchScreen.storyboard */,
+				F52AA1EC256FF107003DD345 /* Info.plist */,
+			);
+			path = ServerTarget;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -93,6 +128,23 @@
 			productReference = F52AA185256D9C55003DD345 /* STransportLayer.app */;
 			productType = "com.apple.product-type.application";
 		};
+		F52AA1DB256FF106003DD345 /* ServerTarget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F52AA1ED256FF107003DD345 /* Build configuration list for PBXNativeTarget "ServerTarget" */;
+			buildPhases = (
+				F52AA1D8256FF106003DD345 /* Sources */,
+				F52AA1D9256FF106003DD345 /* Frameworks */,
+				F52AA1DA256FF106003DD345 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ServerTarget;
+			productName = ServerTarget;
+			productReference = F52AA1DC256FF106003DD345 /* ServerTarget.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -103,6 +155,9 @@
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
 					F52AA184256D9C55003DD345 = {
+						CreatedOnToolsVersion = 12.0;
+					};
+					F52AA1DB256FF106003DD345 = {
 						CreatedOnToolsVersion = 12.0;
 					};
 				};
@@ -121,6 +176,7 @@
 			projectRoot = "";
 			targets = (
 				F52AA184256D9C55003DD345 /* STransportLayer */,
+				F52AA1DB256FF106003DD345 /* ServerTarget */,
 			);
 		};
 /* End PBXProject section */
@@ -132,6 +188,15 @@
 			files = (
 				F52AA195256D9C58003DD345 /* LaunchScreen.storyboard in Resources */,
 				F52AA192256D9C58003DD345 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F52AA1DA256FF106003DD345 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F52AA1EB256FF107003DD345 /* LaunchScreen.storyboard in Resources */,
+				F52AA1E8256FF107003DD345 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +216,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F52AA1D8256FF106003DD345 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F52AA1E3256FF106003DD345 /* ViewController.swift in Sources */,
+				F52AA1DF256FF106003DD345 /* AppDelegate.swift in Sources */,
+				F52AA1F5256FF12B003DD345 /* ClientConnection.swift in Sources */,
+				F52AA1F4256FF12B003DD345 /* Client.swift in Sources */,
+				F52AA1F2256FF12B003DD345 /* Server.swift in Sources */,
+				F52AA1F3256FF12B003DD345 /* ServerConnection.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -158,6 +236,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				F52AA194256D9C58003DD345 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		F52AA1E9256FF107003DD345 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F52AA1EA256FF107003DD345 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -317,6 +403,42 @@
 			};
 			name = Release;
 		};
+		F52AA1EE256FF107003DD345 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ServerTarget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = No.ServerTarget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F52AA1EF256FF107003DD345 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ServerTarget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = No.ServerTarget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -334,6 +456,15 @@
 			buildConfigurations = (
 				F52AA19A256D9C58003DD345 /* Debug */,
 				F52AA19B256D9C58003DD345 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F52AA1ED256FF107003DD345 /* Build configuration list for PBXNativeTarget "ServerTarget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F52AA1EE256FF107003DD345 /* Debug */,
+				F52AA1EF256FF107003DD345 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
