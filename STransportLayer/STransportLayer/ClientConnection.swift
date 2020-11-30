@@ -14,6 +14,8 @@ class ClientConnection {
 
     let nwConnection: NWConnection
     let queue: DispatchQueue
+    
+    var delegate: NetworkDelegate?
 
     init(nwConnection: NWConnection) {
         self.nwConnection = nwConnection
@@ -31,7 +33,7 @@ class ClientConnection {
     var didReceiveData:((Data?) -> Void)? = nil
 
     func start() {
-        print("connection will start")
+        delegate?.log(message: "connection will start")
         nwConnection.stateUpdateHandler = stateDidChange(to:)
         setupReceive()
         nwConnection.start(queue: queue)
@@ -42,7 +44,7 @@ class ClientConnection {
         case .waiting(let error):
             connectionDidFail(error: error)
         case .ready:
-            print("Client connection ready")
+            delegate?.log(message: "Client connection ready")
         case .failed(let error):
             connectionDidFail(error: error)
         default:
@@ -53,13 +55,13 @@ class ClientConnection {
     private func setupReceive() {
         nwConnection.receiveMessage { (data, _, isComplete, error) in
             if let data = data, !data.isEmpty {
-                print("isComplete: \(isComplete)")
+                delegate?.log(message: "isComplete: \(isComplete)")
 //                if let block = self.didReceiveData
 //                {
 //                    block(data)
 //                }
                 let message = String(data: data, encoding: .utf8)
-                print("connection did receive, data: \(data as NSData) string: \(message ?? "-" )")
+                delegate?.log(message: "connection did receive, data: \(data as NSData) string: \(message ?? "-" )")
             }
 //            if isComplete {
 ////                self.connectionDidEnd()
@@ -79,22 +81,22 @@ class ClientConnection {
                 self.connectionDidFail(error: error)
                 return
             }
-                print("connection did send, data: \(data as NSData)")
+                delegate?.log(message: "connection did send, data: \(data as NSData)")
         }))
     }
 
     func stop() {
-        print("connection will stop")
+        delegate?.log(message: "connection will stop")
         stop(error: nil)
     }
 
     private func connectionDidFail(error: Error) {
-        print("connection did fail, error: \(error)")
+        delegate?.log(message: "connection did fail, error: \(error)")
         self.stop(error: error)
     }
 
     private func connectionDidEnd() {
-        print("connection did end")
+        delegate?.log(message: "connection did end")
 //        self.stop(error: nil)
     }
 

@@ -8,9 +8,21 @@
 import Foundation
 import Network
 
+protocol NetworkDelegate {
+    func log(message: String)
+}
+
 class Server {
     let port: NWEndpoint.Port
     let listener: NWListener
+    
+    var delegate: NetworkDelegate? {
+        didSet {
+            for connection in connectionsByID.values {
+                connection.delegate = delegate
+            }
+        }
+    }
 
     private var connectionsByID: [Int: ServerConnection] = [:]
 
@@ -20,7 +32,7 @@ class Server {
     }
 
     func start() throws {
-        print("Server starting...")
+        delegate?.log(message: "Server starting...")
         listener.stateUpdateHandler = self.stateDidChange(to:)
         listener.newConnectionHandler = self.didAccept(nwConnection:)
         listener.start(queue: .main)
@@ -29,9 +41,10 @@ class Server {
     func stateDidChange(to newState: NWListener.State) {
         switch newState {
         case .ready:
-          print("Server ready.")
+            delegate?.log(message: "Server ready.")
+
         case .failed(let error):
-            print("Server failure, error: \(error.localizedDescription)")
+            delegate?.log(message: "Server failure, error: \(error.localizedDescription)")
             exit(EXIT_FAILURE)
         default:
             break
@@ -46,17 +59,18 @@ class Server {
         connection.didStopCallback = { _ in
             self.connectionDidStop(connection)
         }
+        connection.delegate = delegate
         connection.start()
         connection.send(data: "Welcome you are connection \(connection.id)".data(using: .utf8)!)
-        print("server did open connection \(connection.id)")
+        delegate?.log(message: "server did open connection \(connection.id)")
     }
 
     private func connectionDidStop(_ connection: ServerConnection) {
         self.connectionsByID.removeValue(forKey: connection.id)
-        print("server did close connection \(connection.id)")
+        delegate?.log(message: "server did close connection \(connection.id)")
     }
 
-    private func stop() {
+    func stop() {
         self.listener.stateUpdateHandler = nil
         self.listener.newConnectionHandler = nil
         self.listener.cancel()

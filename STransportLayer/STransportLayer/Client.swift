@@ -9,9 +9,16 @@ import Foundation
 import Network
 
 class Client {
+    
     let connection: ClientConnection
     let host: NWEndpoint.Host
     let port: NWEndpoint.Port
+    
+    var delegate: NetworkDelegate? {
+        didSet {
+            connection.delegate = delegate
+        }
+    }
 
     init(host: String, port: UInt16) {
         self.host = NWEndpoint.Host(host)
@@ -21,7 +28,7 @@ class Client {
     }
 
     func start() {
-        print("Client started \(host) \(port)")
+        delegate?.log(message: "Client started \(host) \(port)")
         connection.didStopCallback = didStopCallback(error:)
         connection.start()
     }
