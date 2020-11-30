@@ -27,6 +27,8 @@ class ClientConnection {
     }
 
     var didStopCallback: ((Error?) -> Void)? = nil
+    
+    var didReceiveData:((Data?) -> Void)? = nil
 
     func start() {
         print("connection will start")
@@ -49,14 +51,21 @@ class ClientConnection {
     }
 
     private func setupReceive() {
-        nwConnection.receive(minimumIncompleteLength: 1, maximumLength: tcpMAX) { (data, _, isComplete, error) in
+        nwConnection.receiveMessage { (data, _, isComplete, error) in
             if let data = data, !data.isEmpty {
+                print("isComplete: \(isComplete)")
+//                if let block = self.didReceiveData
+//                {
+//                    block(data)
+//                }
                 let message = String(data: data, encoding: .utf8)
                 print("connection did receive, data: \(data as NSData) string: \(message ?? "-" )")
             }
-            if isComplete {
-                self.connectionDidEnd()
-            } else if let error = error {
+//            if isComplete {
+////                self.connectionDidEnd()
+//            }
+//            else
+            if let error = error {
                 self.connectionDidFail(error: error)
             } else {
                 self.setupReceive()
@@ -86,7 +95,7 @@ class ClientConnection {
 
     private func connectionDidEnd() {
         print("connection did end")
-        self.stop(error: nil)
+//        self.stop(error: nil)
     }
 
     private func stop(error: Error?) {

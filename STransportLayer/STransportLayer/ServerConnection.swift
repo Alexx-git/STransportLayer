@@ -61,14 +61,32 @@ class ServerConnection {
             }
         }
     }
-
+    
+    var count = 0
+    var final = false
+    
 
     func send(data: Data) {
-        self.connection.send(content: data, completion: .contentProcessed( { error in
+        self.connection.send(content: data, contentContext: .defaultStream, isComplete: false, completion: .contentProcessed( { error in
             if let error = error {
                 self.connectionDidFail(error: error)
                 return
             }
+            self.count += 1
+            let data = "\(self.count)".data(using: .utf8)!
+            if self.count < 999 {
+                self.send(data: data)
+            }
+//            self.final = !self.final
+//            if self.final {
+//                self.send(data: nil)
+//            } else {
+//                self.count += 1
+//                let data = "\(self.count)".data(using: .utf8)!
+//                if self.count < 999 {
+//                    self.send(data: data)
+//                }
+//            }
             print("connection \(self.id) did send, data: \(data as NSData)")
         }))
     }

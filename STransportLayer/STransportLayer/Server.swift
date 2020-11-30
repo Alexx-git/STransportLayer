@@ -37,6 +37,8 @@ class Server {
             break
         }
     }
+    
+    var count = 0
 
     private func didAccept(nwConnection: NWConnection) {
         let connection = ServerConnection(nwConnection: nwConnection)
@@ -64,4 +66,18 @@ class Server {
         }
         self.connectionsByID.removeAll()
     }
+    
+    
 }
+
+//extension Server {
+//    func sendNotification(data: Data) {
+//        for connection in connectionsByID.values {
+//            connection.send(data: data)
+//        }
+//    }
+//    
+//    func sendMessage(_ message: String) {
+//        sendNotification(data: message.data(using: .utf8)!)
+//    }
+//}

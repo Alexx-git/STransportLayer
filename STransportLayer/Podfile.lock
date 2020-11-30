@@ -1,0 +1,16 @@
+PODS:
+  - BoxView (1.6.9)
+
+DEPENDENCIES:
+  - BoxView
+
+SPEC REPOS:
+  trunk:
+    - BoxView
+
+SPEC CHECKSUMS:
+  BoxView: b277520cb7397da56950238dafaa30573cf8e4f9
+
+PODFILE CHECKSUM: 6a674e7b9a1f938a7384732ecc161319739d4dee
+
+COCOAPODS: 1.10.0
